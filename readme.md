@@ -16,7 +16,7 @@ The file `runBrirIdentification.m` runs the method including the following steps
 - Display results
 
 ## Thirdparty Dependencies
-The folder `thirdparty` (or your MATLAB path) needs to contain the following thirdparty dependencies/files. These are **not provided and need to be added manually!**
+The following dependencies are required to run the BRIR identification. They are **not provided and need to be added manually!** Make sure to install the toolboxes and add the files to your MATLAB path (or the folder `thirdparty`).
 - the [STFT Toolbox](https://github.com/tomshlomo/stft)
 - the [ITA Toolbox](https://www.ita-toolbox.org/)
 - the [KU100 HRIR Set](https://zenodo.org/records/3928297/files/HRIR_L2702.sofa)
