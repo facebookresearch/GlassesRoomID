@@ -8,7 +8,7 @@ addpath(genpath('./thirdparty'))
 
 %% BRIR identification from speech captured with smart glasses
 % cf. Deppisch, Meyer-Kahlen, Amengual Gari, 'Blind Identification of
-% Binaural Room Impulse Responses from Head-Worn Microphone Arrays', 2023
+% Binaural Room Impulse Responses from Head-Worn Microphone Arrays', 2024
 
 % Scroll through this script to find the opportunity to listen to some renderings.
 
@@ -67,7 +67,7 @@ rirSigMouthNoisy = rirSigMouth + noiseGainMouth .* babbleNoise;
 % soundsc(rirSigMouthNoisy(:,5), fs)
 
 %% dereverberate
-disp('Starting dereverberation')
+disp('Starting dereverberation, this might take a while...')
 
 % gwpe params
 gwpeParams.predictionDelayMs = 20;
@@ -131,8 +131,9 @@ rirSigFarDerevBfd = beamformTimeDomain(rirSigFarDerev, gwpeParams.blockLen, gwpe
 rirSigMouthBfd = beamformTimeDomain(rirSigMouthNoisy, gwpeParams.blockLen, gwpeParams.hopsize, atfMouth.', bfParams);
 
 %% uncomment to listen to pseudo reference signals from far speech and own speech:
-% soundsc(rirSigFarDerevBfd, fs)
-% soundsc(rirSigMouthBfd, fs)
+% soundsc(rirSigFarNoisy(:,1), fs) % noisy array signal
+% soundsc(rirSigFarDerevBfd, fs) % pseudo reference signal from far speech
+% soundsc(rirSigMouthBfd, fs) % pseudo reference signal from own speech
 
 %% calculate RIR estimate using the frequency-domain multichannel Wiener filter
 disp('Estimating RIRs')
@@ -205,13 +206,16 @@ rirMwfSynth = synthRirFromEstimate(rirEstMwfFar, fs, earlyPartThreshMs, freqRang
 %% render BRIRs
 disp('Binaural Rendering')
 
-% load an HRIR set, here we use https://zenodo.org/record/3928297/files/HRIR_L2702.mat
-hrirStruct = load('HRIR_L2702.mat');
-hL = double(hrirStruct.HRIR_L2702.irChOne);
-hR = double(hrirStruct.HRIR_L2702.irChTwo);
-hrirGridAziRad = double(hrirStruct.HRIR_L2702.azimuth.');
-hrirGridZenRad = double(hrirStruct.HRIR_L2702.elevation.'); % the elevation angles actually contain zenith data between 0..pi
-fsHrir = double(hrirStruct.HRIR_L2702.fs);
+% load an HRIR set, here we use https://zenodo.org/records/3928297/files/HRIR_L2702.sofa
+SOFAstart;
+hrirsSofa = SOFAload('HRIR_L2702.sofa');
+fsHrir = hrirsSofa.Data.SamplingRate;
+hL = squeeze(hrirsSofa.Data.IR(:, 1, :)).';
+hR = squeeze(hrirsSofa.Data.IR(:, 2, :)).';
+
+% extract incidence angles
+hrirGridAziRad =        hrirsSofa.SourcePosition(:, 1) * pi/180;
+hrirGridZenRad = pi/2 - hrirsSofa.SourcePosition(:, 2) * pi/180;
 
 % load full-sphere ATFs
 atfStructFullSphere = load('./data/ATFs/glasses_on_HATS_ATFs_sphere.mat');
@@ -240,6 +244,7 @@ brirSigMwfSynth = fftfilt(brirMwfSynth, sig);
 brirSigGt = fftfilt(brirFar, sig);
 
 %% uncomment to listen to binaural renderings:
+disp('Binaural rendering done, uncomment to listen')
 % soundsc(brirSigMwfEst, fs)    % BRIR estimate (may contain ringing)
 % soundsc(brirSigMwfSynth, fs)  % resynthesized BRIR estimate
 % soundsc(brirSigGt, fs)        % ground truth BRIR
@@ -257,7 +262,7 @@ rirEstMouthNormd = rirEstMwfMouth ./ max(abs(rirEstMwfMouth(:)));
 
 figure
 subplot(211)
-plot(db(abs(rirFarNormd(:,5))))
+plot(db(abs(rirFarNormd)))
 grid on
 title('Far Field Speech: Measured RIR')
 xlim(xLims)
@@ -266,7 +271,7 @@ xlabel('t (samples)')
 ylabel('Magnitude (dB)')
 
 subplot(212)
-plot(db(abs(rirEstFarNormd(:,5))))
+plot(db(abs(rirEstFarNormd)))
 grid on
 title('Far Field Speech: Estimated RIR')
 xlim(xLims)
@@ -276,7 +281,7 @@ ylabel('Magnitude (dB)')
 
 figure
 subplot(211)
-plot(db(abs(rirMouthNormd(:,1))))
+plot(db(abs(rirMouthNormd)))
 grid on
 title('Own Speech: Measured RIR')
 xlim(xLims)
@@ -285,7 +290,7 @@ xlabel('t (samples)')
 ylabel('Magnitude (dB)')
 
 subplot(212)
-plot(db(abs(rirEstMouthNormd(:,1))))
+plot(db(abs(rirEstMouthNormd)))
 grid on
 title('Own Speech: Estimated RIR')
 xlim(xLims)

@@ -3,7 +3,7 @@
 function [wMlsL, wMlsR] = getEMagLsFiltersFromAtf(hL, hR, hrirGridAziZenRad, atfIrs, atfGridAziZenRad, fs, filterLen, f_cut)
 % Thomas Deppisch, 2023
 
-NFFT_MAX_LEN            = 2048; % maxium oversamping length in samples
+NFFT_MAX_LEN            = 2048; % maximum oversampling length in samples
 SVD_REGUL_CONST         = 0.01;
 
 % TODO: Implement dealing with HRIRs that are longer than the requested filter
@@ -16,8 +16,7 @@ k_cut = ceil(f_cut / f(2));
 
 numMics = size(atfIrs,2);
 
-% zero pad and remove group delay with subsample precision
-% (alternative to applying global phase delay later)
+% zero pad and remove group delay
 hL(end+1:nfft, :) = 0;
 hR(end+1:nfft, :) = 0;
 grpDL = median(grpdelay(sum(hL, 2), 1, f, fs));
