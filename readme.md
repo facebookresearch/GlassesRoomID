@@ -1,7 +1,7 @@
-# Blind Identification of Binaural Room Impulse Responses from Head-Worn Microphone Arrays
+# Blind Identification of Binaural Room Impulse Responses from Smart Glasses
 
 This repository contains a MATLAB reference implementation of the method from the manuscript
-> [Thomas Deppisch, Nils Meyer-Kahlen, Sebastia Amengual Gari, "Blind Identification of Binaural Room Impulse Responses from Head-Worn Microphone Arrays", arXiv:2403.19217, 2024.](https://arxiv.org/abs/2403.19217)
+> [Thomas Deppisch, Nils Meyer-Kahlen, Sebastia Amengual Gari, "Blind Identification of Binaural Room Impulse Responses from Smart Glasses", arXiv:2403.19217, 2024.](https://arxiv.org/abs/2403.19217)
 
 The file `runBrirIdentification.m` runs the method including the following steps:
 - Convolve a measured multichannel RIR with a speech signal and add babble noise
