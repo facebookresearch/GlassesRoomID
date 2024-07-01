@@ -24,7 +24,7 @@ This page provides binaural audio examples to accompany the manuscript
 > [Thomas Deppisch, Nils Meyer-Kahlen, Sebastia Amengual Gari, "Blind Identification of Binaural Room Impulse Responses from Smart Glasses", arXiv:2403.19217, 2024.](https://arxiv.org/abs/2403.19217)
 
 ## Listening Experiment
-The proposed method was evaluated in a listening experiment where participants had to answer which of the test samples _was recorded in the same room as the reference_. The order of stimuli and trials was randomized, and the stimuli were only refered to as _Reference_, _A_, and _B_. For more details please see Sec. VI in the manuscript. Below you find examples of stimuli from a few trials. All stimuli of all trials are available at the [GitHub repository](https://github.com/facebookresearch/GlassesRoomID/tree/main/experimentStimuli).
+The proposed method was evaluated in a listening experiment where participants had to answer which of the test samples _was recorded in the same room as the reference_. The order of stimuli and trials was randomized, and the stimuli were only referred to as _Reference_, _A_, and _B_. For more details please see Sec. VI in the manuscript. Below you find examples of stimuli from a few trials. All stimuli of all trials are available at the [GitHub repository](https://github.com/facebookresearch/GlassesRoomID/tree/main/experimentStimuli).
 
 The following examples compare the reference to an estimate from the same room and to a measurement from a different room.
 <div class="player">
@@ -75,6 +75,7 @@ The following examples compare the reference to an estimate from the same room a
     </ts-track>
 </div>
 
+<br/><br/>
 The following examples compare the reference to an estimate from the same room and to a measurement from the same room.
 <div class="player">
     <ts-track title="Reference MeetingRoom">
@@ -112,6 +113,7 @@ The following examples compare the reference to an estimate from the same room a
     </ts-track>
 </div>
 
+<br/><br/>
 The following examples compare the reference to a measurement from the same room and to a measurement from a different room.
 <div class="player">
     <ts-track title="Reference MeetingRoom">
@@ -149,6 +151,7 @@ The following examples compare the reference to a measurement from the same room
     </ts-track>
 </div>
 
+<br/><br/>
 ## Audio Examples from Non-Ideal Estimation Conditions
 The following binaural audio examples showcase renderings under non-ideal estimation conditions (see Sec. V and especially V-F in the manuscript).
 
@@ -207,6 +210,7 @@ Estimation with additive babble noise of varying signal-to-noise ratio (SNR):
     </ts-track>
 </div>
 
+<br/><br/>
 Estimation with inaccurate DOA (varying DOA offset):
 <div class="player">
     <ts-track title="Reference LabRoomDry">
@@ -280,6 +284,7 @@ Estimation with inaccurate DOA (varying DOA offset):
     </ts-track>
 </div>
 
+<br/><br/>
 Estimation with directional interference of varying signal-to-interference ratio (SIR):
 <div class="player">
     <ts-track title="Reference LabRoomDry">
@@ -344,6 +349,7 @@ Estimation with directional interference of varying signal-to-interference ratio
     </ts-track>
 </div>
 
+<br/><br/>
 ## Ringing and Resynthesis
 The following binaural audio example showcases ringing that occurs in a raw BRIR estimate and suppression of the ringing using the proposed resynthesis method. See Sec. IV in the manuscript for details. Note that we deliberately choose an example where strong ringing occured.
 <div class="player">
