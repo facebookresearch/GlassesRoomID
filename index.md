@@ -351,7 +351,7 @@ Estimation with directional interference of varying signal-to-interference ratio
 
 <br/><br/>
 ## Ringing and Resynthesis
-The following binaural audio example showcases ringing that occurs in a raw BRIR estimate and suppression of the ringing using the proposed resynthesis method. See Sec. IV in the manuscript for details. Note that we deliberately choose an example where strong ringing occured.
+The following binaural audio example showcases ringing that occurs in a raw BRIR estimate and suppression of the ringing using the proposed resynthesis method. See Sec. IV in the manuscript for details. Note that we deliberately chose an example where strong ringing occured.
 <div class="player">
     <ts-track title="Reference">
         <ts-source src="ringingExample/meetingRoom_binaural_groundTruth.wav"></ts-source>
