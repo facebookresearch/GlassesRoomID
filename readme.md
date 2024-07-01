@@ -3,7 +3,7 @@
 This repository contains a MATLAB reference implementation of the method from the manuscript
 > [Thomas Deppisch, Nils Meyer-Kahlen, Sebastia Amengual Gari, "Blind Identification of Binaural Room Impulse Responses from Smart Glasses", arXiv:2403.19217, 2024.](https://arxiv.org/abs/2403.19217)
 
-Binaural audio examples are provided at the [companion website](https://facebookresearch.github.io/GlassesRoomID/).
+Binaural audio examples are provided on the [companion website](https://facebookresearch.github.io/GlassesRoomID/).
 
 The file `runBrirIdentification.m` runs the method including the following steps:
 - Convolve a measured multichannel RIR with a speech signal and add babble noise
