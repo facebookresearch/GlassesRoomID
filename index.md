@@ -21,7 +21,7 @@ layout: default
 # Blind Identification of Binaural Room Impulse Responses from Smart Glasses
 
 This page provides binaural audio examples to accompany the manuscript
-> [Thomas Deppisch, Nils Meyer-Kahlen, Sebastia Amengual Gari, "Blind Identification of Binaural Room Impulse Responses from Smart Glasses", arXiv:2403.19217, 2024.](https://arxiv.org/abs/2403.19217)
+> [Thomas Deppisch, Nils Meyer-Kahlen, Sebastia Amengual Gari, "Blind Identification of Binaural Room Impulse Responses from Smart Glasses", IEEE/ACM Transactions on Audio, Speech, and Language Processing, vol. 32, pp. 4052-4065, 2024, doi: 10.1109/TASLP.2024.3454964.](https://ieeexplore.ieee.org/document/10666277)
 
 ## Listening Experiment
 The proposed method was evaluated in a listening experiment where participants had to answer which of the test samples _was recorded in the same room as the reference_. The order of stimuli and trials was randomized, and the stimuli were only referred to as _Reference_, _A_, and _B_. For more details please see Sec. VI in the manuscript. Below you find examples of stimuli from a few trials. All stimuli of all trials are available at the [GitHub repository](https://github.com/facebookresearch/GlassesRoomID/tree/main/experimentStimuli).
